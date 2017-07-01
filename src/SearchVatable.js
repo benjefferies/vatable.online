@@ -69,7 +69,9 @@ class SearchVatable extends Component {
         if (response.data.length === 0) {
           this.setState({names: [{name: 'Create new vatable?'}]})
         } else {
-          this.setState({names: response.data})
+          var names = JSON.stringify(response.data)
+          names = JSON.parse(unescape(names))
+          this.setState({names: names})
         }
       })
   }
