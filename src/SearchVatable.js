@@ -74,17 +74,19 @@ class SearchVatable extends Component {
           this.setState({names: names})
         }
       })
+      .catch(console.log)
   }
 
   getVatable(name) {
     if (name.length === 0) {
       return
     }
-    api.get(`${name}`)
+    api.get(name)
       .then( (response) => {
         this.state.setVatable(response.data)
       })
       .catch(error => {
+        console.log(error)
         if (error.response.status === 404) {
           this.state.setVatable({})
           console.log(error)
@@ -99,6 +101,7 @@ class SearchVatable extends Component {
         this.state.setVatable({name: name, up: 0, down: 0, report: 0})
       })
       .catch(error => {
+        console.log(error)
         Popup.alert(`${name} already exists`)
       });
   }

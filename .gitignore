@@ -58,3 +58,9 @@ typings/
 .env
 
 build
+
+# IDE
+.idea
+
+# Mac
+.DS_Store
