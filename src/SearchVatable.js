@@ -22,7 +22,8 @@ class SearchVatable extends Component {
       background: 'rgba(255, 255, 255, 0.9)',
       cursor: 'pointer'
     }
-    const inputProps = { style: { 'width': '50vw', 'fontSize': '1.5em' } }
+    const inputProps = { style: { 'width': '50vw', 'fontSize': '1.5em' }, id:"searchBar" }
+    const wrapperProps = {id:'autocomplete'}
     return (
       <Autocomplete
         value={this.state.name}
@@ -30,12 +31,13 @@ class SearchVatable extends Component {
         getItemValue={(vatable) => vatable.name}
         onSelect={this.selectVatable.bind(this)}
         renderItem={(item, isHighlighted) =>
-          <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
+          <div name={item.name} style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
             {item.name}
           </div>
         }
         onChange={this.onChange.bind(this)}
         inputProps={inputProps}
+        wrapperProps={wrapperProps}
         menuStyle={menuStyle}
       />
     );

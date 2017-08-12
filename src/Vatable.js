@@ -17,11 +17,11 @@ class Vatable extends Component {
     return (
       <div className="votes">
         <figure>
-          <img className="vote" src={like} onClick={this.upVote.bind(this)} alt="" />
+          <img id="upVote" className="vote" src={like} onClick={this.upVote.bind(this)} alt="" />
           <figcaption>{this.props.vatable.up} votes</figcaption>
         </figure>
         <figure>
-          <img className="vote" src={dislike} onClick={this.downVote.bind(this)} alt="" />
+          <img id="downVote" className="vote" src={dislike} onClick={this.downVote.bind(this)} alt="" />
           <figcaption>{this.props.vatable.down} votes</figcaption>
         </figure>
       </div>
