@@ -60,7 +60,7 @@ typings/
 build
 
 # IDE
-.idea
+.idea/
 
 # Mac
 .DS_Store
