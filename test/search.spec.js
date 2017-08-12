@@ -2,32 +2,48 @@ import {expect} from 'chai';
 import Chromeless from 'chromeless'
 import {v4} from 'uuid'
 import search from './search'
+import create from './create'
 
 describe('Search vatable tests', () => {
 
-  it('should find vatable items when searching for laptop', async () => {
-    const chromeless = new Chromeless({debug: true})
+  it('should find vatable items when vatable already created', async () => {
+    // Given
+    const chromeless = new Chromeless({remote: true,debug: true})
+    const vatable = v4()
+    await create(chromeless, vatable)
 
-    const searchResults = await search(chromeless, 'laptop')
+    // When
+    const searchResults = await search(chromeless, searchTerm)
 
-    expect(searchResults).to.contain('laptop')
+    // Then
+    expect(searchResults).to.contain(vatable)
     await chromeless.end()
   });
 
   it('should show create vatable item when searching for new item', async () => {
-    const chromeless = new Chromeless({debug: true})
+    // Given
+    const chromeless = new Chromeless({remote: true,debug: true})
+    const vatable = v4()
 
-    const searchResults = await search(chromeless, v4())
-    console.log(JSON.stringify(searchResults));
+    // When
+    const searchResults = await search(chromeless, vatable)
+
+    // Then
     expect(searchResults).to.contain('Create new vatable?')
     await chromeless.end()
   });
 
-  it('should select laptop when found', async function() {
-    const chromeless = new Chromeless({debug: true})
+  it('should select vatable when found', async function() {
+    //Given
+    const chromeless = new Chromeless({remote: true,debug: true})
+    const vatable = v4()
+    await create(chromeless, vatable)
 
-    const searchResults = await search(chromeless, 'laptop')
+    // When
+    const searchResults = await search(chromeless, vatable)
     await chromeless.click('div[name="laptop3"]').wait('#upVote')
+
+    // Then
     expect(await chromeless.exists('#upVote')).to.be.true
     expect(await chromeless.exists('#downVote')).to.be.true
     await chromeless.end()
