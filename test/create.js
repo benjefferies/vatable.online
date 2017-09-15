@@ -1,9 +1,8 @@
 import search from './search'
 
-const create = (chromeless, createValue) => {
+const create = (chromeless, createValue) => async function() {
   await search(chromeless, createValue)
-  chromeless.click(`div[name="Create new vatable?"]`)
-    .wait('#upVote')
+  await chromeless.click(`div[name="Create new vatable?"]`)
 }
 
 export default create

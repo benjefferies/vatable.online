@@ -20,7 +20,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Popup />
+        <Popup id="votedPopup"/>
         <p className="title">Vatable</p>
         <SearchVatable setVatable={this.setVatable.bind(this)} />
         { Object.keys(this.state.vatable).length > 0 && <Vatable vatable={this.state.vatable} /> }

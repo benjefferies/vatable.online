@@ -1,6 +1,6 @@
 import Chromeless from 'chromeless'
 
-const search = (chromeless, searchValue) => chromeless.goto('http://vatable.online')
+const search = (chromeless, searchValue) => chromeless.goto('http://localhost:3000')
   .wait('input[id="searchBar"]')
   .type(searchValue, 'input[id="searchBar"]')
   .wait('#autocomplete > div > div')
