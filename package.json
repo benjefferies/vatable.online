@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
-    "react": "^15.6.1",
+    "react": "^15.6.2",
     "react-autocomplete": "^1.5.9",
     "react-dom": "^15.6.1",
     "react-popup": "^0.8.0",
